@@ -1,0 +1,1 @@
+Fuzzy system to help us decide whether to go to a restaurant based on its distance, price and rating.
