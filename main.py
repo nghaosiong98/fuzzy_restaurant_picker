@@ -1,44 +1,36 @@
 import skfuzzy as fuzz
 import numpy as np
-import matplotlib.pyplot as plt
+from utils import plot_mf
 
+# Define universe
 distance = np.arange(0, 21, 1)
 price = np.arange(0, 31, 1)
 rating = np.arange(0, 5.1, 0.1)
 going = np.arange(0, 1.01, 0.01)
 
+# Define membership function
 near = fuzz.trapmf(distance, [0, 0, 5, 7])
 middle_dist = fuzz.trapmf(distance, [5, 7, 10, 12])
 far = fuzz.trapmf(distance, [10, 12, 20, 20])
-# plt.plot(distance, near, color='r')
-# plt.plot(distance, middle_dist, color='g')
-# plt.plot(distance, far, color='b')
-# plt.show()
 
 cheap = fuzz.trimf(price, [0, 0, 11])
 middle_price = fuzz.trimf(price, [8, 12, 16])
 expensive = fuzz.trapmf(price, [12, 20, 30, 30])
-# plt.plot(price, cheap, color='r')
-# plt.plot(price, middle_price, color='g')
-# plt.plot(price, expensive, color='b')
-# plt.show()
 
 bad = fuzz.trimf(rating, [0, 0, 2.2])
 medium = fuzz.trimf(rating, [1.5, 2.5, 3.5])
 good = fuzz.trimf(rating, [2.8, 5, 5])
-# plt.plot(rating, bad, color='r')
-# plt.plot(rating, medium, color='g')
-# plt.plot(rating, good, color='b')
-# plt.show()
 
 not_go = fuzz.trimf(going, [0, 0, 0.75])
 will_go = fuzz.trimf(going, [0.25, 1.0, 1.0])
-# plt.plot(going, will_go, color='g')
-# plt.plot(going, not_go, color='b')
-# plt.show()
+
+plot_mf(distance, low=near, medium=middle_dist, high=far, xlabel='distance (KM)', ylabel='membership degree')
+plot_mf(price, low=cheap, medium=middle_price, high=expensive, xlabel='price (RM)', ylabel='membership degree')
+plot_mf(rating, low=bad, medium=medium, high=good, xlabel='rating', ylabel='membership degree')
+plot_mf(going, low=not_go, high=going, xlabel='going', ylabel='membership degree')
 
 distance_input = 8
-price_input = 3
+price_input = 10
 rating_input = 4.2
 
 # Rule 1: The restaurant is far, price is cheap
@@ -101,6 +93,21 @@ temp7 = np.fmax(temp6, rule_8_clip)
 output = np.fmax(temp7, rule_9_clip)
 
 # Defuzzification
-print("output", output)
 going_predict = fuzz.defuzz(going, output, 'centroid')
 print('The possibility of going is: ', going_predict)
+
+# fire_going = fuzz.interp_membership(going, output, going_predict)
+# going_0 = np.zeros_like(going)
+# fig, ax0 = plt.subplots(figsize=(8, 3))
+# ax0.plot(going, will_go, 'g', linestyle='--')
+# ax0.plot(going, not_go, 'r', linestyle='--')
+# ax0.fill_between(going, going_0, output, facecolor='Orange', alpha=0.5)
+# ax0.plot([going_predict, going_predict], [0, fire_going], 'k', linewidth=2.5, alpha=0.9)
+# ax0.get_xaxis().tick_bottom()
+# ax0.get_yaxis().tick_left()
+# ax0.set_xlim([min(going), max(going)])
+# ax0.set_ylim([0, 1])
+# plt.xlabel('Possibility of Going to the Restaurant')
+# plt.ylabel('membership degree')
+# plt.title('Restaurant ')
+# plt.show()
