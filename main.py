@@ -1,5 +1,6 @@
 import skfuzzy as fuzz
 import numpy as np
+import matplotlib.pyplot as plt
 from utils import plot_mf
 
 # Define universe
@@ -24,14 +25,19 @@ good = fuzz.trimf(rating, [2.8, 5, 5])
 not_go = fuzz.trimf(going, [0, 0, 0.75])
 will_go = fuzz.trimf(going, [0.25, 1.0, 1.0])
 
-plot_mf(distance, low=near, medium=middle_dist, high=far, xlabel='distance (KM)', ylabel='membership degree')
-plot_mf(price, low=cheap, medium=middle_price, high=expensive, xlabel='price (RM)', ylabel='membership degree')
-plot_mf(rating, low=bad, medium=medium, high=good, xlabel='rating', ylabel='membership degree')
-plot_mf(going, low=not_go, high=going, xlabel='going', ylabel='membership degree')
+# Plot MF graph
+plot_mf(distance, low=near, medium=middle_dist, high=far, xlabel='distance (KM)', ylabel='membership degree',
+        title='Restaurant distance (KM)')
+plot_mf(price, low=cheap, medium=middle_price, high=expensive, xlabel='price (RM)', ylabel='membership degree',
+        title='The food price (RM)')
+plot_mf(rating, low=bad, medium=medium, high=good, xlabel='rating', ylabel='membership degree', title='Ovarall rating')
+plot_mf(going, low=not_go, high=going, xlabel='going', ylabel='membership degree',
+        title='Possibility of going to the restaurant')
 
-distance_input = 8
-price_input = 10
-rating_input = 4.2
+# Getting user inputs
+distance_input = input('Enter distance (KM):')
+price_input = input('Enter price (RM):')
+rating_input = input('Enter rating (0.0 - 5.0):')
 
 # Rule 1: The restaurant is far, price is cheap
 rule_1_a = fuzz.interp_membership(distance, far, distance_input)
@@ -70,7 +76,9 @@ fire_rule_8 = min(rule_8_a, rule_8_b, rule_8_c)
 rule_9 = fuzz.interp_membership(price, expensive, price_input)
 fire_rule_9 = rule_9
 # Rule 10: The rating is good, price is cheap
-# rule_10 = fuzz.interp_membership()
+rule_10_a = fuzz.interp_membership(rating, good, rating_input)
+rule_10_b = fuzz.interp_membership(price, cheap, price_input)
+fire_rule_10 = min(rule_10_a, rule_10_b)
 
 rule_1_clip = np.fmin(fire_rule_1, will_go)
 rule_2_clip = np.fmin(fire_rule_2, will_go)
@@ -81,6 +89,7 @@ rule_6_clip = np.fmin(fire_rule_6, will_go)
 rule_7_clip = np.fmin(fire_rule_7, will_go)
 rule_8_clip = np.fmin(fire_rule_8, not_go)
 rule_9_clip = np.fmin(fire_rule_9, not_go)
+rule_10_clip = np.fmin(fire_rule_10, going)
 
 # Aggregate all rules
 temp1 = np.fmax(rule_1_clip, rule_2_clip)
@@ -90,24 +99,25 @@ temp4 = np.fmax(temp3, rule_5_clip)
 temp5 = np.fmax(temp4, rule_6_clip)
 temp6 = np.fmax(temp5, rule_7_clip)
 temp7 = np.fmax(temp6, rule_8_clip)
-output = np.fmax(temp7, rule_9_clip)
+temp8 = np.fmax(temp7, rule_9_clip)
+output = np.fmax(temp6, rule_10_clip)
 
 # Defuzzification
 going_predict = fuzz.defuzz(going, output, 'centroid')
-print('The possibility of going is: ', going_predict)
+print('The possibility of going is: ', round(going_predict, 4))
 
-# fire_going = fuzz.interp_membership(going, output, going_predict)
-# going_0 = np.zeros_like(going)
-# fig, ax0 = plt.subplots(figsize=(8, 3))
-# ax0.plot(going, will_go, 'g', linestyle='--')
-# ax0.plot(going, not_go, 'r', linestyle='--')
-# ax0.fill_between(going, going_0, output, facecolor='Orange', alpha=0.5)
-# ax0.plot([going_predict, going_predict], [0, fire_going], 'k', linewidth=2.5, alpha=0.9)
-# ax0.get_xaxis().tick_bottom()
-# ax0.get_yaxis().tick_left()
-# ax0.set_xlim([min(going), max(going)])
-# ax0.set_ylim([0, 1])
-# plt.xlabel('Possibility of Going to the Restaurant')
-# plt.ylabel('membership degree')
-# plt.title('Restaurant ')
-# plt.show()
+fire_going = fuzz.interp_membership(going, output, going_predict)
+going_0 = np.zeros_like(going)
+fig, ax0 = plt.subplots(figsize=(8, 3))
+ax0.plot(going, will_go, 'g', linestyle='--')
+ax0.plot(going, not_go, 'r', linestyle='--')
+ax0.fill_between(going, going_0, output, facecolor='Orange', alpha=0.5)
+ax0.plot([going_predict, going_predict], [0, fire_going], 'k', linewidth=2.5, alpha=0.9)
+ax0.get_xaxis().tick_bottom()
+ax0.get_yaxis().tick_left()
+ax0.set_xlim([min(going), max(going)])
+ax0.set_ylim([0, 1])
+plt.xlabel('Possibility of Going to the Restaurant')
+plt.ylabel('membership degree')
+plt.title('Restaurant ')
+plt.show()
