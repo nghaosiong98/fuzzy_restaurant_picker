@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def plot_mf(universe, low=None, medium=None, high=None, xlabel='', ylabel='', title=''):
+def plot_mf(universe, low=None, medium=None, high=None, xlabel='', ylabel='', title='', legends=[]):
     if low is not None:
         plt.plot(universe, low)
     if medium is not None:
@@ -11,4 +11,5 @@ def plot_mf(universe, low=None, medium=None, high=None, xlabel='', ylabel='', ti
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title(title)
+    plt.legend(legends)
     plt.show()
