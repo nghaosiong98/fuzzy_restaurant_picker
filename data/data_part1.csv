@@ -1,0 +1,41 @@
+id,price,distance,rating,label
+1,7,4,4,going
+2,10,5,4,going
+3,6,10,4,going
+4,6,8,4,going
+5,8,5,4,going
+6,10,10,3,going
+7,10,7,4,going
+8,10,9,4,going
+9,8,10,4,going
+10,6,5,4,going
+11,15,10,4,going
+12,7,6,4,going
+13,8,5,4,going
+14,7,6,4,going
+15,7,10,4,going
+16,10,7,3,going
+17,10,10,4,going
+18,10,10,4,going
+19,7,4,4,going
+20,8,6,3,going
+21,16,10,2,not going
+22,30,20,2,not going
+23,12,20,3,not going
+24,10,10,3,not going
+25,25,15,2,not going
+26,10,20,2,not going
+27,15,15,3,not going
+28,20,15,3,not going
+29,15,20,2,not going
+30,12,10,2,not going
+31,25,15,3,not going
+32,14,14,3,not going
+33,10,10,3,not going
+34,10,10,2,not going
+35,18,15,2,not going
+36,20,10,2,not going
+37,25,20,3,not going
+38,20,15,4,not going
+39,10,10,3,not going
+40,15,13,2,not going

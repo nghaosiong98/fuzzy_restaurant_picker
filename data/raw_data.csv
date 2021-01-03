@@ -1,0 +1,21 @@
+Which characteristics below will you first consider when choosing a restaurant?,Rate the distance of the restaurant from your place. [5km],Rate the distance of the restaurant from your place. [7km],Rate the distance of the restaurant from your place. [10km],Rate the distance of the restaurant from your place. [15km],Rate the distance of the restaurant from your place. [20km],Rate the price range. [RM 7],Rate the price range. [RM 10],Rate the price range. [RM 14],Rate the price range. [RM 18],Rate the price range. [RM 25],At what price do you consider okay for a meal? (In Ringgit Malaysia) [E.g. answer: 10.00],Above what price do you consider expensive for a meal? (In Ringgit Malaysia)  [E.g. answer: 10.00],How far do you consider okay to travel to a restaurant? (In kilometre)  [E.g. answer: 10.0],Above what distance do you consider far to travel to a restaurant? (In Kilometre)  [E.g. answer: 10.0],What is the average rating of a restaurant that you normally choose to visit?,Below what rating will you consider not visiting the restaurant?,"Will you consider visiting the restaurant if: [The restaurant is far, but the price is cheap.]","Will you consider visiting the restaurant if: [The restaurant is far, but the rating is good.]","Will you consider visiting the restaurant if: [The restaurant is close, but the price is expensive.]","Will you consider visiting the restaurant if: [The restaurant is close, but the rating is bad and the price is cheap.]"
+Close to you (Nearby),Close,Close,Medium,Medium,Far,Cheap,Cheap,Cheap,Medium,Expensive,7,16,4,10,4,2,Going,Going,Not Going,Going
+Close to you (Nearby),Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Medium,Medium,10,30,5,20,4,2,Going,Going,Not Going,Not Going
+Low price,Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Expensive,Expensive,6,12,10,20,4,3,Going,Not Going,Not Going,Not Going
+Low price,Medium,Medium,Medium,Medium,Far,Medium,Medium,Medium,Expensive,Expensive,6,10,8,10,4,3,Going,Going,Not Going,Going
+Close to you (Nearby),Close,Medium,Medium,Far,Far,Medium,Medium,Medium,Medium,Expensive,8,25,5,15,4,2,Not Going,Going,Going,Not Going
+Restaurant rating,Medium,Medium,Far,Far,Far,Medium,Medium,Medium,Expensive,Expensive,10,10,10,20,3,2,Going,Going,Not Going,Not Going
+Restaurant rating,Medium,Medium,Medium,Medium,Far,Medium,Medium,Medium,Medium,Expensive,10,15,7,15,4,3,Going,Going,Not Going,Not Going
+Close to you (Nearby),Close,Close,Medium,Medium,Far,Cheap,Medium,Medium,Expensive,Expensive,10,20,9,15,4,3,Going,Going,Not Going,Not Going
+Close to you (Nearby),Close,Close,Medium,Medium,Far,Cheap,Cheap,Medium,Medium,Expensive,8,15,10,20,4,2,Going,Going,Not Going,Going
+Close to you (Nearby),Medium,Medium,Medium,Far,Far,Medium,Medium,Expensive,Expensive,Expensive,6,12,5,10,4,2,Going,Not Going,Not Going,Not Going
+Restaurant rating,Close,Close,Medium,Medium,Far,Cheap,Medium,Medium,Expensive,Expensive,15,25,10,15,4,3,Going,Going,Not Going,Not Going
+Low price,Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Expensive,Expensive,7,14,6,14,4,3,Going,Going,Not Going,Not Going
+Close to you (Nearby),Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Expensive,Expensive,8,10,5,10,4,3,Going,Going,Not Going,Not Going
+Low price,Medium,Medium,Far,Far,Far,Medium,Medium,Expensive,Expensive,Expensive,7,10,6,10,4,2,Going,Going,Going,Going
+Close to you (Nearby),Medium,Medium,Far,Far,Far,Medium,Medium,Medium,Medium,Expensive,7,18,10,15,4,2,Not Going,Going,Not Going,Going
+Close to you (Nearby),Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Expensive,Expensive,10,20,7,10,3,2,Going,Not Going,Going,Not Going
+Close to you (Nearby),Close,Medium,Medium,Medium,Medium,Cheap,Medium,Medium,Medium,Expensive,10,25,10,20,4,3,Going,Going,Not Going,Going
+Restaurant rating,Close,Close,Medium,Medium,Far,Cheap,Medium,Medium,Medium,Expensive,10,20,10,15,4,4,Going,Going,Not Going,Not Going
+Low price,Close,Medium,Medium,Far,Far,Cheap,Medium,Medium,Medium,Expensive,7,10,4,10,4,3,Not Going,Going,Not Going,Going
+Close to you (Nearby),Close,Medium,Medium,Far,Far,Cheap,Cheap,Medium,Medium,Expensive,8,15,6,13,3,2,Not Going,Not Going,Going,Going

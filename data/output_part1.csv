@@ -1,0 +1,41 @@
+id,price,distance,rating,label,predicted_possibility,predicted_label
+1,7,4,4,going,0.6666666666666666,going
+2,10,5,4,going,0.6285714285714287,going
+3,6,10,4,going,0.6666666666666666,going
+4,6,8,4,going,0.6285714285714287,going
+5,8,5,4,going,0.6388882222055557,going
+6,10,10,3,going,-1.0,zero error
+7,10,7,4,going,0.5916666666666668,going
+8,10,9,4,going,0.6285714285714287,going
+9,8,10,4,going,0.6388882222055557,going
+10,6,5,4,going,0.6666666666666666,going
+11,15,10,4,going,0.611111111111111,going
+12,7,6,4,going,0.611111111111111,going
+13,8,5,4,going,0.6388882222055557,going
+14,7,6,4,going,0.611111111111111,going
+15,7,10,4,going,0.6666666666666666,going
+16,10,7,3,going,-1.0,zero error
+17,10,10,4,going,0.6285714285714287,going
+18,10,10,4,going,0.6285714285714287,going
+19,7,4,4,going,0.6666666666666666,going
+20,8,6,3,going,-1.0,zero error
+21,16,10,2,not going,0.4222124884995403,not going
+22,30,20,2,not going,0.33333333333333354,not going
+23,12,20,3,not going,0.33333333333333354,not going
+24,10,10,3,not going,-1.0,zero error
+25,25,15,2,not going,0.33333333333333354,not going
+26,10,20,2,not going,0.3714285714285716,not going
+27,15,15,3,not going,0.38888888888888906,not going
+28,20,15,3,not going,0.38067950040105436,not going
+29,15,20,2,not going,0.38888888888888906,not going
+30,12,10,2,not going,0.33333333333333354,not going
+31,25,15,3,not going,0.33333333333333354,not going
+32,14,14,3,not going,0.36111177779444503,not going
+33,10,10,3,not going,-1.0,zero error
+34,10,10,2,not going,0.3714285714285716,not going
+35,18,15,2,not going,0.41581637434048374,not going
+36,20,10,2,not going,0.38067950040105436,not going
+37,25,20,3,not going,0.33333333333333354,not going
+38,20,15,4,not going,-1.0,zero error
+39,10,10,3,not going,-1.0,zero error
+40,15,13,2,not going,0.38888888888888906,not going

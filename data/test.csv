@@ -1,0 +1,25 @@
+price,distance,rating,label
+8,10,4,going
+6,5,4,going
+15,10,4,going
+7,6,4,going
+8,5,4,going
+7,6,4,going
+7,10,4,going
+10,7,3,going
+10,10,4,going
+10,8,4,going
+7,4,4,going
+8,6,3,going
+15,20,2,not going
+12,10,2,not going
+25,15,3,not going
+14,14,3,not going
+10,10,3,not going
+10,10,2,not going
+18,15,2,not going
+20,10,2,not going
+25,20,3,not going
+20,15,4,not going
+10,10,3,not going
+15,13,2,not going
