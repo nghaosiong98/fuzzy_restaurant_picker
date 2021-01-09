@@ -1,6 +1,14 @@
 import numpy as np
 import skfuzzy as fuzz
 from utils import plot_mf
+import pandas as pd
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--graph", default=False, help='Display graph', action='store_true')
+parser.add_argument("--input_csv", default='', type=str, help='Input csv file path')
+parser.add_argument("--output_csv", default='./output_part2.csv', type=str, help='Input csv file path')
+args = parser.parse_args()
 
 # Universe
 price = np.arange(0, 31, 1)
@@ -23,12 +31,14 @@ bad = fuzz.trapmf(rating, [0, 0, 2, 3])
 moderate = fuzz.trimf(rating, [2, 3, 4])
 good = fuzz.trapmf(rating, [3, 4, 5, 5])
 
-plot_mf(price, low=cheap, medium=medium_price, high=expensive, xlabel='price (RM)', ylabel='membership degree',
-        title='The food price (RM)', legends=['cheap', 'medium', 'expensive'])
-plot_mf(distance, low=close, medium=medium_distance, high=far, xlabel='distance (KM)', ylabel='membership degree',
-        title='Restaurant distance (KM)', legends=['close', 'medium', 'far'])
-plot_mf(rating, low=bad, medium=moderate, high=good, xlabel='rating', ylabel='membership degree',
-        title='Ovarall rating', legends=['bad', 'moderate', 'good'])
+# Plot MF graph
+if args.graph:
+    plot_mf(price, low=cheap, medium=medium_price, high=expensive, xlabel='price (RM)', ylabel='membership degree',
+            title='The food price (RM)', legends=['cheap', 'medium', 'expensive'])
+    plot_mf(distance, low=close, medium=medium_distance, high=far, xlabel='distance (KM)', ylabel='membership degree',
+            title='Restaurant distance (KM)', legends=['close', 'medium', 'far'])
+    plot_mf(rating, low=bad, medium=moderate, high=good, xlabel='rating', ylabel='membership degree',
+            title='Ovarall rating', legends=['bad', 'moderate', 'good'])
 
 
 def predict(price_input, distance_input, rating_input):
@@ -93,10 +103,22 @@ def predict(price_input, distance_input, rating_input):
 
 
 if __name__ == '__main__':
-    while True:
-        # Get user input
-        price_input = input('Enter price (RM):')
-        distance_input = input('Enter distance (KM):')
-        rating_input = input('Enter rating (0.0 - 5.0):')
-        output = predict(price_input, distance_input, rating_input)
-        print('You can consider', 'going' if output >= 0.5 else 'not going', 'to this restaurant.')
+    if args.input_csv is not '':
+        # Read input from csv file
+        dataset = pd.read_csv(args.input_csv)
+        dataset['predicted_possibility'] = dataset.apply(
+            lambda row: predict(row['price'], row['distance'], row['rating']),
+            axis=1)
+        dataset['predicted_label'] = dataset.apply(
+            lambda row: 'zero error' if row['predicted_possibility'] == -1 else (
+                'going' if row['predicted_possibility'] >= 0.5 else 'not going'),
+            axis=1)
+        dataset.to_csv(args.output_csv, index=False)
+    else:
+        while True:
+            # Get user input
+            price_input = input('Enter price (RM):')
+            distance_input = input('Enter distance (KM):')
+            rating_input = input('Enter rating (0.0 - 5.0):')
+            output = predict(price_input, distance_input, rating_input)
+            print('You can consider', 'going' if output >= 0.5 else 'not going', 'to this restaurant.')
